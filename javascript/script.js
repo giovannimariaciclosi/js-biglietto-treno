@@ -25,11 +25,41 @@ L'output del prezzo finale va messo fuori in forma umana (con massimo due decima
 */
 
 let userTripKm = parseInt(prompt("Inserisci il numero di chilometri che vuoi percorrere"));
-  console.log(userTripKm);
+  // console.log(userTripKm);
 
 let userAge = parseInt(prompt("Inserisci la tua età"));
-  console.log(userAge);
+  // console.log(userAge);
 
-let ticketPrice = userTripKm * 0.21 + "€";
-  console.log(ticketPrice);
+let ticketPriceFull = (userTripKm * 0.21).toFixed(2);
+  // console.log(ticketPriceFull);
 
+let ticketPrice20Discount = (ticketPriceFull - ((ticketPriceFull / 100) * 20)).toFixed(2);
+  // console.log(ticketPrice20Discount);
+
+let ticketPrice40Discount = (ticketPriceFull - ((ticketPriceFull / 100) * 40)).toFixed(2);
+  // console.log(ticketPrice40Discount);
+
+if (userAge < 18) {
+
+  // console.log(ticketPrice20Discount);
+  document.writeln(`
+  Il prezzo del biglietto intero è di ${ticketPriceFull + " €"}.
+  Essendo minore di 18 anni ha diritto ad uno sconto del 20%.
+  Il prezzo finale del biglietto scontato è di ${ticketPrice20Discount + " €"}`)
+
+} else if (userAge > 65) {
+
+  // console.log(ticketPrice40Discount);
+  document.writeln(`
+  Il prezzo del biglietto intero è di ${ticketPriceFull + " €"}.
+  Essendo over 65 ha diritto ad uno sconto del 40%.
+  Il prezzo finale del biglietto scontato è di ${ticketPrice40Discount + " €"}`)
+
+} else {
+
+  // console.log(ticketPriceFull);
+  document.writeln(`
+  Il prezzo del biglietto intero è di ${ticketPriceFull + " €"}.
+  Non hai diritto a sconti.. sfigato!`)
+
+}
